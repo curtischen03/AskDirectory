@@ -1,20 +1,13 @@
 import { GoogleGenAI } from "@google/genai";
 import env from "dotenv";
 import fs from "fs/promises";
-import path from "path";
 import { dirname } from "path";
 import { fileURLToPath } from "url";
 
 env.config();
 const ai = new GoogleGenAI({ apiKey: process.env.GOOGLE_API_KEY });
 
-async function analyze_pdf(
-  pdf_path,
-  context,
-  task,
-  output_constraint,
-  directory_locating
-) {
+async function analyze_pdf(pdf_path, context, task, output_constraint) {
   const __dirname = dirname(fileURLToPath(import.meta.url));
   const filePath = __dirname + pdf_path;
 
@@ -65,23 +58,28 @@ async function analyze_text(context, task, output_constraint) {
   return response.text;
 }
 
-const question = "Where has curtis worked at?";
+async function complete_pdf_analysis(question, root) {
+  //root is something like ./pdfs
+  const directory_contents = await retrieveDirectoryContents(root);
+  const directory_locating = await analyze_text(
+    "Given the question below along with all the files in this directory, choose which of the files will most likely have the answer,",
+    `Directory Contents: ${directory_contents}, Question: ${question}`,
+    "Answer with the file name only (one word response)"
+  );
+  const clean_file_name = directory_locating.trim().split("\n")[0];
+  const pdf_analysis = await analyze_pdf(
+    `/pdfs/${clean_file_name}`,
+    "You are answering a question based on the pdf that is provided to you. If the information is not present in the pdf, say there is no answer in the pdf.",
+    `Question:${question}`,
+    "Answer in only text, no other formatting"
+  );
+  return pdf_analysis;
+}
 
-const directory_contents = await retrieveDirectoryContents("./pdfs");
-const directory_locating = await analyze_text(
-  "Given the question below along with all the files in this directory, choose which of the files will most likely have the answer,",
-  `Directory Contents: ${directory_contents}, Question: ${question}`,
-  "Answer with the file name only (one word response)"
-);
-const clean_file_name = directory_locating.trim().split("\n")[0];
-const pdf_analysis = await analyze_pdf(
-  `/pdfs/${clean_file_name}`,
-  "You are answering a question based on the pdf that is provided to you. If the information is not present in the pdf, say there is no answer in the pdf.",
-  `Question:${question}`,
-  "Answer in only text, no other formatting",
-  directory_locating
-);
-console.log("Question:", question);
-console.log("Directory Contents:", directory_contents);
-console.log("Directory Location for Question:", directory_locating);
-console.log("PDF Analysis:", pdf_analysis);
+// const question = "Where has curtis worked at?";
+// const questionOne = "What is curtis' undergrad UCLA GPA?";
+// const questionTwo = "What is curtis' GRE score?";
+// const response = await complete_pdf_analysis(questionTwo, "./pdfs");
+// console.log(response);
+
+export default complete_pdf_analysis;
