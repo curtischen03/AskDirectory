@@ -8,7 +8,13 @@ import { fileURLToPath } from "url";
 env.config();
 const ai = new GoogleGenAI({ apiKey: process.env.GOOGLE_API_KEY });
 
-async function analyze_pdf(pdf_path, context, task, output_constraint) {
+async function analyze_pdf(
+  pdf_path,
+  context,
+  task,
+  output_constraint,
+  directory_locating
+) {
   const __dirname = dirname(fileURLToPath(import.meta.url));
   const filePath = __dirname + pdf_path;
 
@@ -67,14 +73,15 @@ const directory_locating = await analyze_text(
   `Directory Contents: ${directory_contents}, Question: ${question}`,
   "Answer with the file name only (one word response)"
 );
-
+const clean_file_name = directory_locating.trim().split("\n")[0];
 const pdf_analysis = await analyze_pdf(
-  "/pdfs/Curtis_Chen_2025_Resume_1.pdf",
+  `/pdfs/${clean_file_name}`,
   "You are answering a question based on the pdf that is provided to you. If the information is not present in the pdf, say there is no answer in the pdf.",
   `Question:${question}`,
-  "Answer in only text, no other formatting"
+  "Answer in only text, no other formatting",
+  directory_locating
 );
 console.log("Question:", question);
 console.log("Directory Contents:", directory_contents);
-console.log("Direcotry Location for Question:", directory_locating);
+console.log("Directory Location for Question:", directory_locating);
 console.log("PDF Analysis:", pdf_analysis);
