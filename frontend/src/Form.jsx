@@ -8,7 +8,7 @@ function Form() {
     const form = document.getElementById("prompt");
     const formData = new FormData(form);
     const prompt = formData.get("prompt");
-    const response = await fetch("http://localhost:3000/submit", {
+    const response = await fetch("/api", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -24,12 +24,7 @@ function Form() {
     <div class="container-fluid content">
       <div class="row justify-content-center mb-5">
         <div class="col-lg-8 col-md-10 col-sm-12">
-          <form
-            id="prompt"
-            action="http://localhost:3000/submit"
-            method="POST"
-            onSubmit={handleSubmit}
-          >
+          <form id="prompt" onSubmit={handleSubmit}>
             <div class="form-group">
               <label for="name" class="h2 mb-4">
                 Directory Query
