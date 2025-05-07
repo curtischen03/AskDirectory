@@ -21,19 +21,40 @@ function Form() {
   }
 
   return (
-    <div>
-      <form
-        id="prompt"
-        action="http://localhost:3000/submit"
-        method="POST"
-        onSubmit={handleSubmit}
-      >
-        <label for="name">Prompt</label>
-        <input type="text" id="prompt" name="prompt" required />
-        <button type="submit">Submit</button>
-      </form>
-      <h2>Summary:</h2>
-      <div dangerouslySetInnerHTML={{ __html: answer }} />
+    <div class="container-fluid content">
+      <div class="row justify-content-center mb-5">
+        <div class="col-lg-8 col-md-10 col-sm-12">
+          <form
+            id="prompt"
+            action="http://localhost:3000/submit"
+            method="POST"
+            onSubmit={handleSubmit}
+          >
+            <div class="form-group">
+              <label for="name" class="h2 mb-4">
+                Document Query
+              </label>
+              <input
+                type="text"
+                id="prompt"
+                name="prompt"
+                required
+                class="form-control"
+              />
+            </div>
+            <br></br>
+            <button class="btn btn-dark" type="submit">
+              Submit
+            </button>
+          </form>
+          <br></br>
+          <h2>Query Answer</h2>
+          <div
+            class="mb-2 post-content lead"
+            dangerouslySetInnerHTML={{ __html: answer }}
+          />
+        </div>
+      </div>
     </div>
   );
 }
