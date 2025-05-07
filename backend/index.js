@@ -2,7 +2,7 @@ import Express from "express";
 import bodyParser from "body-parser";
 import env from "dotenv";
 import cors from "cors";
-import complete_pdf_analysis from "./test.js";
+import complete_pdf_analysis from "./analyze.js";
 
 env.config();
 const app = Express();
