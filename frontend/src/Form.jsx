@@ -32,7 +32,7 @@ function Form() {
           >
             <div class="form-group">
               <label for="name" class="h2 mb-4">
-                Document Query
+                Directory Query
               </label>
               <input
                 type="text"
@@ -48,7 +48,7 @@ function Form() {
             </button>
           </form>
           <br></br>
-          <h2>Query Answer</h2>
+          <h2>Directory Answer</h2>
           <div
             class="mb-2 post-content lead"
             dangerouslySetInnerHTML={{ __html: answer }}
