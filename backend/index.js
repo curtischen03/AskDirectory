@@ -16,7 +16,7 @@ app.get("/", (req, res) => {
   res.send("<h1>Hello World</h1>");
 });
 
-app.post("/submit", async (req, res) => {
+app.post("/api", async (req, res) => {
   const prompt = req.body.prompt;
   const root = "./pdfs";
   const answer = await complete_pdf_analysis(prompt, root);
