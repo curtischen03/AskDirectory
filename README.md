@@ -2,7 +2,7 @@
 
 **AskDirectory** is an intelligent file-querying web application that allows users to ask natural language questions about the contents of files within a directory — and get precise answers instantly. Powered by Google’s Gemini 2.5 Flash API, AskDirectory is an incredibly useful tool for students, researchers, professionals, and anyone who needs to extract information from documents without manually reading through them. It can easily be integrated into a portfolio website to answer questions about the user and their experience. It can also give high level answers after being trained on company handbooks, policies, and training docs.
 
-### Youtube Overview (Click to go to Youtube)
+### Project Demo (Click to go to Youtube)
 
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/gY3hlbRXSh8/0.jpg)](https://www.youtube.com/watch?v=gY3hlbRXSh8)
 
