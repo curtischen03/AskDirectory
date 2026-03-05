@@ -25,7 +25,7 @@ AskDirectory provides fast and accurate answers in seconds.
 
 ---
 
-### 🛠 Tech Stack
+### Tech Stack
 
 - **Frontend**: React.js with Bootstrap Styling
 - **Backend**: Node.js with Express
