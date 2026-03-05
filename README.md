@@ -6,7 +6,7 @@
 
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/gY3hlbRXSh8/0.jpg)](https://www.youtube.com/watch?v=gY3hlbRXSh8)
 
-### 🚀 What It Does
+### What It Does
 
 AskDirectory enables users to:
 
@@ -33,15 +33,15 @@ AskDirectory provides fast and accurate answers in seconds.
 
 ---
 
-### 📂 File Type Support
+### File Type Support
 
 Currently, AskDirectory supports **PDF files only**, but future updates will expand compatibility to include DOCX, TXT, and more.
 
 ---
 
-### ⚙️ Getting Started
+### Getting Started
 
-#### 🖥️ Frontend
+#### Frontend
 
 ```bash
 cd frontend
@@ -49,7 +49,7 @@ npm install
 npm run dev
 ```
 
-#### 🧠 Backend
+#### Backend
 
 ```bash
 cd backend
@@ -73,14 +73,14 @@ Query examples:
 
 ---
 
-### 🌟 Future Plans
+### Future Plans
 
 - Support for additional file types (DOCX, TXT, HTML, etc.)
 - User authentication and query history
 
 ---
 
-### 🤖 Powered by Google AI
+### Powered by Google AI
 
 AskDirectory leverages the powerful **Gemini 2.0 Flash** model to deliver high-speed, context-aware answers — making it a fast and intelligent directory query tool.
 
